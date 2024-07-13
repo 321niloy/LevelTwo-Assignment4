@@ -1,0 +1,293 @@
+@charset "UTF-8";
+:root {
+  --z24: translateZ(24.5px);
+  --z80: translateZ(80px);
+  --ts: all 0.5s ease;
+  --x90: rotateX(90deg);
+  --xm90: rotateX(-90deg);
+  --y90: rotateY(90deg);
+  --ym90: rotateY(-90deg);
+}
+
+nav {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  z-index: 100;
+}
+
+ol {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.main-menu {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  justify-content: end;
+}
+
+li {
+  width: 160px;
+  position: relative;
+  cursor: pointer;
+}
+li span {
+  width: 100%;
+  height: 49px;
+  display: block;
+  position: relative;
+  transition: var(--ts);
+  transform-style: preserve-3d;
+}
+li span::before,
+li span::after {
+  width: 100%;
+  padding: 16px 0;
+  display: block;
+  position: absolute;
+  border-radius: 8px;
+  font: 400 14px "Consolas";
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main-item:nth-of-type(2),
+.main-item:nth-of-type(4) {
+  margin: 0 2px;
+}
+
+.main-item:nth-of-type(3)::before,
+.main-item:nth-of-type(4)::before {
+  width: 100%;
+  top: 25px;
+  display: block;
+  position: absolute;
+  color: #fff;
+  font: 400 24px "Consolas";
+  text-align: center;
+  transition: var(--ts);
+  z-index: 100;
+  content: "▾";
+}
+
+.main-item:hover > span {
+  transform: var(--x90);
+}
+.main-item > span::before {
+  background: #ff0015;
+  color: #fff;
+  transform: var(--z24);
+  box-shadow: 0 8px 6px -6px #aba7a7;
+}
+.main-item > span::after {
+  background: #ee0505;
+  transform: var(--xm90) var(--z24);
+  color: #fff;
+}
+
+.home::before,
+.home::after {
+  content: "Home";
+}
+
+.about::before,
+.about::after {
+  content: "about";
+}
+
+.products::before,
+.products::after {
+  content: "Products";
+}
+
+.manage-products::before,
+.manage-products::after {
+  content: "Manage Products";
+}
+
+.contact::before,
+.contact::after {
+  content: "Cart";
+}
+.sub-menu {
+  top: 51px;
+  display: none;
+  position: absolute;
+}
+.sub-menu li {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.sub-menu li:nth-of-type(2) {
+  margin: 2px 0;
+}
+
+.sub-item:nth-of-type(1) {
+  -webkit-animation: fade 0.5s ease 0.2s both;
+  animation: fade 0.5s ease 0.2s both;
+}
+
+.sub-item:nth-of-type(2) {
+  -webkit-animation: fade 0.5s ease 0.4s both;
+  animation: fade 0.5s ease 0.4s both;
+}
+
+.sub-item:nth-of-type(3) {
+  -webkit-animation: fade 0.5s ease 0.6s both;
+  animation: fade 0.5s ease 0.6s both;
+}
+
+@-webkit-keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.sub-item span::before {
+  background: #bc003b;
+  color: #fff;
+  transform: var(--z80);
+}
+.sub-item span::after {
+  background: #ff0015;
+  color: #fff;
+}
+
+.item-left:hover span {
+  transform: var(--y90);
+}
+.item-left span::after {
+  transform: var(--ym90) var(--z80);
+}
+
+.item-right:hover span {
+  transform: var(--ym90);
+}
+.item-right span::after {
+  transform: var(--y90) var(--z80);
+}
+
+.small::before,
+.small::after {
+  content: "Dummy One";
+}
+
+.standart::before,
+.standart::after {
+  content: "Dummy Two";
+}
+
+.big::before,
+.big::after {
+  content: "Dummy Three";
+}
+
+.premium::before,
+.premium::after {
+  content: "Dummy One";
+}
+
+.combo::before,
+.combo::after {
+  content: "Dummy Two";
+}
+
+.special::before,
+.special::after {
+  content: "Dummy Three";
+}
+
+.main-item:nth-of-type(3):hover::before,
+.main-item:nth-of-type(4):hover::before {
+  color: #fefefe;
+  content: "▴";
+}
+.main-item:nth-of-type(3):hover .sub-menu,
+.main-item:nth-of-type(4):hover .sub-menu {
+  display: block;
+}
+
+@media screen and (min-width: 321px) and (max-width: 839px) {
+  nav {
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+  }
+}
+@media (max-width: 839px) {
+  .main-item:nth-of-type(2),
+  .main-item:nth-of-type(4) {
+    margin: 3px 0;
+  }
+
+  .sub-menu {
+    position: relative;
+    top: 1px;
+    padding: 2px 0 1px 0;
+  }
+  .sub-menu li span::before {
+    transform: var(--z24);
+  }
+  .sub-menu li span::after {
+    transform: rotateY(0deg) var(--x90) var(--z24);
+  }
+  .sub-menu li:hover span {
+    transform: var(--xm90);
+  }
+}
+
+/* CSS for icon and hamburger menu ///// */
+
+.menu-icon {
+  position: absolute; /* Position fixed to the left */
+  /* Adjust as needed */
+  left: 30px; /* Adjust as needed */
+  color: #ffffff; /* Adjust icon color */
+}
+
+.menu-toggle {
+  display: none; /* Hide the button by default */
+}
+
+/* Show button on smaller screens */
+@media (max-width: 839px) {
+  nav {
+    padding: 10px 10px 40px 0px;
+    margin: 0px;
+  }
+  .menu-icon {
+    position: fixed;
+    top: 10px;
+  }
+  .main-menu {
+    display: none; /* Hide main menu on smaller screens initially */
+  }
+
+  .menu-toggle {
+    display: block; /* Show button on smaller screens */
+    position: fixed; /* Position the button fixed for easy access */
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+  ol {
+    width: 75%;
+  }
+}
+
+.main-menu.show-menu {
+  display: flex !important; /* Ensure menu is shown */
+}

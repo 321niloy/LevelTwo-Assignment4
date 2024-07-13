@@ -1,0 +1,29 @@
+.width-layout {
+  width: 1150px; /* Set your desired fixed width */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 16px; /* Optional: Add some padding */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  overflow-x: hidden;
+}
+
+* Media query for tablets (landscape mode) */ @media (max-width: 1024px) {
+  .width-layout {
+    max-width: 960px; /* Adjust width for tablets */
+  }
+}
+
+/* Media query for tablets (portrait mode) */
+@media (max-width: 768px) {
+  .width-layout {
+    max-width: 720px; /* Adjust width for smaller tablets */
+    overflow-x: hidden;
+  }
+}
+
+/* Media query for phones */
+@media (max-width: 480px) {
+  .width-layout {
+    max-width: 100%; /* Full width for phones */
+    padding: 8px; /* Adjust padding for phones */
+  }
+}
